@@ -16,8 +16,7 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System;
-using TMPro;
-using UnityEditor.VersionControl;
+using TMPro; 
 #endregion
 
 public class main : MonoBehaviour
