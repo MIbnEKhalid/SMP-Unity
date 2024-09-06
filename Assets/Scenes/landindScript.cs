@@ -26,7 +26,7 @@ public class landindScript : MonoBehaviour
     public CanvasGroup canvasGroup;  // Reference to the CanvasGroup
     private float fadeDuration = 0.5f;  // Adjust duration for fade in/out
     private float fadeDelay = 0.5f;
-
+    public bool removeSaveKey;
 
     private IEnumerator Start()
     {
@@ -53,8 +53,12 @@ public class landindScript : MonoBehaviour
     }
     public void Update()
     {
-        // PlayerPrefs.SetString("LocalRSAPublicKey", null);
-        // PlayerPrefs.SetString("LocalRSAPrivateKey", null);
+        if(removeSaveKey)
+        {
+           PlayerPrefs.SetString("LocalRSAPublicKey", null);
+           PlayerPrefs.SetString("LocalRSAPrivateKey", null);
+            Debug.Log("Removed");
+        }
     }
     public async void GeneratePair()
     {
@@ -95,7 +99,7 @@ public class landindScript : MonoBehaviour
     {
         return Task.Run(() =>
         {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(1024))
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
             {
                 try
                 {

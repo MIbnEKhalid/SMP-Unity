@@ -969,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1693874813}
+  removeSaveKey: 0
 --- !u!1 &2089324690
 GameObject:
   m_ObjectHideFlags: 0
