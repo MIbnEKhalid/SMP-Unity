@@ -12,3 +12,4 @@
 
 - Full Changelog: Check Out The Full Changelog To See All Changes In The Latest Release: [View Changelog](https://github.com/MIbnEKhalid/SMP-Unity/commits/Release).
 - Built From Commit: Latest Release Is Built From [Commit d6dd0c3](https://github.com/MIbnEKhalid/SMP-Unity/commit/d6dd0c3eca92146d6968af7d9d3fda8d18cc4990) or [Repository State d6dd0c3](https://github.com/MIbnEKhalid/SMP-Unity/tree/d6dd0c3eca92146d6968af7d9d3fda8d18cc4990).
+- Unity Editor: This Project Is Built On Unity Editor Version 2022.3.26f1 On Windows
