@@ -16,7 +16,7 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System;
-using TMPro; 
+using TMPro;
 #endregion
 
 public class main : MonoBehaviour
@@ -91,6 +91,10 @@ public class main : MonoBehaviour
         // Program.Main();
     }
 
+    public void OpenLink(string link)
+    {
+        Application.OpenURL(link);
+    }
 
     #region Copy/Paste/Clear/SceneTelepoter
 
