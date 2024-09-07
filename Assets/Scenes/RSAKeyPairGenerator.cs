@@ -136,7 +136,7 @@ public class RSAKeyPairGenerator : MonoBehaviour
     {
         return Task.Run(() =>
         {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(3072))
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
             {
                 try
                 {
