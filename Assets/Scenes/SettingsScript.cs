@@ -25,7 +25,14 @@ public class SettingsScript : MonoBehaviour
         Debug.Log("RSA Enc:  " + EncryptRSA(GenerateNewCustomKeyNow(703), pubickey));
     }
 
+    private bool isFullscreen = true;
 
+    public void ToggleFullscreen()
+    {
+        isFullscreen = !isFullscreen;
+        Screen.fullScreen = isFullscreen;
+        Debug.Log(isFullscreen);
+    }
     bool IsValidRSAKeyLength(int bitLength)
     {
         // Check if the bit length is a power of two and greater than or equal to 1024
@@ -49,7 +56,7 @@ public class SettingsScript : MonoBehaviour
         int.TryParse(ck_IP.text, out int result);
         if (IsValidRSAKeyLength(result))
         {
-            bool works = true; 
+            bool works = true;
             string ckey = GenerateNewCustomKeyNow(result);
             string output = EncryptRSA(ckey, publicKey);
             if (output.StartsWith("RSA Encryption failed: The data to be encrypted exceeds the maximum for this modulus of 117 bytes."))
