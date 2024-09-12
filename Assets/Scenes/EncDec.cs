@@ -18,10 +18,10 @@ using System;
 using TMPro;
 #endregion
 
-public class EncryptScript : MonoBehaviour
+public class EncDec : MonoBehaviour
 {
 
-    public TMP_InputField InputPublicKey;
+    public TMP_InputField InputKey;
     public TMP_InputField InputF;
     public TMP_InputField OutputF;
 
@@ -34,18 +34,18 @@ public class EncryptScript : MonoBehaviour
     void Start()
     {
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
+        string privateKey = PlayerPrefs.GetString("LocalRSAPrivateKey", "");
+        OutputF.readOnly = true;
 
         if (EncryptPage != null && EncryptPage.activeSelf)
         {
-            OutputF.readOnly = true;
-            InputPublicKey.text = publicKey;
+            InputKey.text = publicKey;
             Debug.Log("right");
         }
 
         if (DecryptPage != null && DecryptPage.activeSelf)
         {
-            OutputF.readOnly = true;
-            InputPublicKey.text = publicKey;
+            InputKey.text = privateKey;
             Debug.Log("left");
         }
     }
@@ -56,7 +56,7 @@ public class EncryptScript : MonoBehaviour
         string newGeneratedCustomKey = SMP.GenerateNewCustomKeyNow();
         Debug.Log("newGeneratedCustomKey: " + newGeneratedCustomKey);
 
-        string customKeyRSA = SMP.EncryptRSA(newGeneratedCustomKey, InputPublicKey.text);
+        string customKeyRSA = SMP.EncryptRSA(newGeneratedCustomKey, InputKey.text);
         if (customKeyRSA.StartsWith("RSA Encryption failed: "))
         {
             mainScript.ShowCopyMessage("RSA Key Encryption failed");
@@ -100,7 +100,7 @@ public class EncryptScript : MonoBehaviour
             mainScript.ShowCopyMessage("Message Encrypted Sucessfully!");
         }
         else
-        { 
+        {
             Debug.LogError("Failed");
         }
         newGeneratedCustomKey = null; customKeyRSA = null; ASV = null; CV = null; EV = null; formatMessage = null; formatCustomKey = null; message = null;

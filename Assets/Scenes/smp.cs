@@ -289,8 +289,8 @@ public class smp : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Encryption failed: " + ex.Message);
-            return "Encryption failed: " + ex.Message;
+            Debug.LogError("RSA Encryption failed: " + ex.Message);
+            return "RSA Encryption failed: " + ex.Message;
         }
     }
 
@@ -329,6 +329,9 @@ public class smp : MonoBehaviour
     {
         using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
         {
+            int ckey = PlayerPrefs.GetInt("CustomKeyBitRate");
+            int ckeyInBytes = ckey / 8;
+            Debug.Log(ckeyInBytes.ToString());
             byte[] key = new byte[128]; // 256 bits = 32 bytes
             rng.GetBytes(key);
             // Convert the key to a base64 string for easy storage or display

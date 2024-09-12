@@ -30,7 +30,8 @@ public class landindScript : MonoBehaviour
 
     private IEnumerator Start()
     {
-
+        PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+        PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
         // Get the stored key values
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
         string privateKey = PlayerPrefs.GetString("LocalRSAPrivateKey", "");

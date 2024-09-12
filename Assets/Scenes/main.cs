@@ -28,8 +28,8 @@ public class main : MonoBehaviour
     private float timeLeft;
 
     public CanvasGroup canvasGroup;  // Reference to the CanvasGroup
-    private float fadeDuration = 0.5f;  // Adjust duration for fade in/out
-    private float fadeDelay = 0.5f;
+    public float fadeDuration = 0.5f;  // Adjust duration for fade in/out
+    public float fadeDelay = 0.5f;
     public TMP_Text Message;
 
     #region Update
