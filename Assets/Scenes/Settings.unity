@@ -3686,8 +3686,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Bit Length Must Be Either A Power of 2 (e.g., 1024, 2048, 4096) Or
-    Must Be A Multiple Of 1024 (e.g., 1024, 2048, 3072, 6144).
+  m_text: The Bit Length Must Be Either A Power of 2 (e.g., 512, 1024, 2048, 4096)
+    And Must Be Greater Or Equal To 512
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

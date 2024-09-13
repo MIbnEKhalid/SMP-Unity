@@ -54,6 +54,7 @@ public class ResolutionManager : MonoBehaviour
     }
 
     // Method to change the screen resolution based on the selected dropdown option
+   
     void SetResolution(int resolutionIndex)
     {
         if (resolutionIndex >= 0 && resolutionIndex < resolutions.Length)
@@ -68,8 +69,11 @@ public class ResolutionManager : MonoBehaviour
 
             if (resolution.width > 0 && resolution.height > 0)
             {
-                // Set the resolution to the closest match found with the desired width and height
-                Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, resolution.refreshRate);
+                // Create a RefreshRate object from the refreshRateRatio of the selected resolution
+                RefreshRate refreshRate = resolution.refreshRateRatio;
+
+                // Set the resolution using the new API method with RefreshRate
+                Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode, refreshRate);
             }
         }
     }

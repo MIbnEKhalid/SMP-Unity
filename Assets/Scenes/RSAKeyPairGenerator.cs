@@ -30,9 +30,11 @@ public class RSAKeyPairGenerator : MonoBehaviour
     private CanvasGroup canvasGroup;  // Reference to the CanvasGroup
 
     private bool isGenerating = false; // Flag to track key generation status
-
+    int keysizeb;
     private void Start()
     {
+        keysizeb = PlayerPrefs.GetInt("RsaKeyBitRate");
+
         // Get or add a CanvasGroup component to the messageBox GameObject
         if (messageBox != null)
         {
@@ -130,13 +132,13 @@ public class RSAKeyPairGenerator : MonoBehaviour
         yield return StartCoroutine(FadeIn());
         yield return new WaitForSeconds(0.7f);
         yield return StartCoroutine(FadeOut());
-    }
-
+    } 
     private Task<(string, string)> GenerateKeyPairAsync()
     {
         return Task.Run(() =>
         {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
+            Debug.Log("keysizeb:" + keysizeb);
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(keysizeb))
             {
                 try
                 {

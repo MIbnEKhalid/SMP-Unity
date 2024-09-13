@@ -13,6 +13,8 @@ public class SettingsScript : MonoBehaviour
 {
     public TMP_InputField ck_IP;
     public TMP_InputField Rk_IP;
+    private RSACryptoServiceProvider rsa;
+    bool isGenerating;
 
     void Start()
     {
@@ -33,57 +35,54 @@ public class SettingsScript : MonoBehaviour
         Screen.fullScreen = isFullscreen;
         Debug.Log(isFullscreen);
     }
-    bool IsValidRSAKeyLength(int bitLength)
+    bool IsValidKeyLength(int bitLength)
     {
+        if (bitLength < 512)
+        {
+            return false;
+        }
+
         // Check if the bit length is a power of two and greater than or equal to 1024
         bool isPowerOfTwo = (bitLength >= 1024) && (bitLength & (bitLength - 1)) == 0;
 
         // Check if the bit length is a multiple of 1024 and greater than or equal to 1024
         bool isMultipleOf1024 = (bitLength >= 1024) && (bitLength % 1024 == 0);
 
-        // Check for specific valid lengths like 3072
-        bool isSpecialCase = (bitLength == 3072);
-
         bool twofactor = (bitLength > 0) && ((bitLength & (bitLength - 1)) == 0);
 
         // Return true if any condition is met
-        return isPowerOfTwo || isSpecialCase || isMultipleOf1024 || twofactor;
+        return isPowerOfTwo || isMultipleOf1024 || twofactor;
     }
     public async void UpdateCustomkeyBit()
     {
-        string publicKey = await GenerateKeyPairAsync();
-
+        //Check If Current Key Size Is Valid
         int.TryParse(ck_IP.text, out int result);
-        if (IsValidRSAKeyLength(result))
+        if (!IsValidKeyLength(result))
         {
-            bool works = true;
-            string ckey = GenerateNewCustomKeyNow(result);
-            string output = EncryptRSA(ckey, publicKey);
-            if (output.StartsWith("RSA Encryption failed: The data to be encrypted exceeds the maximum for this modulus of 117 bytes."))
-            {
-                works = false;
-
-            }
-            if (works)
-            {
-                Debug.Log("Custom key Bit Rate Value Updated!");
-                PlayerPrefs.SetInt("CustomKeyBitRate", result);
-            }
-            else
-            {
-                Debug.Log("You either need to decrease custom key or increase RSA key size");
-            }
+            Debug.Log("Please Use Correct Bit Rate (any number that is power of 2 and greater than 512)");
+            return;
         }
-        else
+
+        //Check If Current RSA Key Size Can Encrypt New CustomKey Size, If Not then Warn User
+        int rkey = PlayerPrefs.GetInt("RsaKeyBitRate");
+        string publicKey = await GenerateKeyPairAsync(rkey);
+        string ckey = GenerateNewCustomKeyNow(result);
+        string output = EncryptRSA(ckey, publicKey);
+        if (output.StartsWith("RSA Encryption failed: The data to be encrypted exceeds the maximum for this modulus"))
         {
-            Debug.Log("Please Use Correct Bit Rate (any number that is power of 2)");
-
+            Debug.Log("You either need to decrease custom key or increase RSA key size");
+            return;
         }
+
+        //If Pass All Condition Update Value
+        PlayerPrefs.SetInt("CustomKeyBitRate", result);
+        Debug.Log("Custom key Bit Rate Value Updated!");
     }
+
     public void UpdateRSAkeyBit()
     {
         int.TryParse(Rk_IP.text, out int result);
-        if (IsValidRSAKeyLength(result))
+        if (IsValidKeyLength(result))
         {
             Debug.Log("RSA key Bit Rate Value Updated!");
             PlayerPrefs.SetInt("RsaKeyBitRate", result);
@@ -95,11 +94,6 @@ public class SettingsScript : MonoBehaviour
 
         }
     }
-
-
-
-
-    private RSACryptoServiceProvider rsa;
 
     public string EncryptRSA(string txt, string key)
     {
@@ -123,27 +117,26 @@ public class SettingsScript : MonoBehaviour
             return "RSA Encryption failed: " + ex.Message;
         }
     }
-    bool isGenerating;
+
     public string GenerateNewCustomKeyNow(int txtsize)
     {
         using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
         {
             // int ckey = PlayerPrefs.GetInt("CustomKeyBitRate");
             int ckeyInBytes = txtsize / 8;
-            Debug.Log(ckeyInBytes.ToString());
             byte[] key = new byte[ckeyInBytes]; // 256 bits = 32 bytes
             rng.GetBytes(key);
             // Convert the key to a base64 string for easy storage or display
-            Debug.Log("wtf" + Convert.ToBase64String(key));
+            //Debug.Log("wtf" + Convert.ToBase64String(key));
             return Convert.ToBase64String(key);
         }
     }
 
-    private async Task<string> GenerateKeyPairAsync()
+    private async Task<string> GenerateKeyPairAsync(int KEysize)
     {
         return await Task.Run(() =>
         {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(1024))
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(KEysize))
             {
                 try
                 {

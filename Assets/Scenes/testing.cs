@@ -19,6 +19,10 @@ public class testing : MonoBehaviour
         // Debug.Log("RSA Enc:  " + EncryptRSA(GenerateNewCustomKeyNow(704), pubickey));
         // With RSACryptoServiceProvider(1024) i was able to encrypt maximum encrypt 703 bit customkey, i want to know for 704 bit what exact RSACryptoServiceProvider length will require 
 
+        for (int i = 0; i < 10; i++)
+        {
+            await GeneratePair(i);
+        }
 
 
     }
@@ -88,7 +92,7 @@ public class testing : MonoBehaviour
             catch (CryptographicException ex)
             {
                 // Handle specific CryptographicException for invalid key size
-                // Debug.LogError($"Failed to generate RSA key pair for key size {keySizeBits} bits: {ex.Message}");
+                 Debug.LogError($"Failed to generate RSA key pair for key size {keySizeBits} bits: {ex.Message}");
             }
         }
         finally

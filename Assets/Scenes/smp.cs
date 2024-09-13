@@ -25,6 +25,13 @@ using System.Text.RegularExpressions;
 public class smp : MonoBehaviour
 {
     int SetBufferSize = 100 * 1024 * 1024;
+    int customKeysize;
+
+    private void Start()
+    {
+        customKeysize = PlayerPrefs.GetInt("CustomKeyBitRate");
+
+    }
 
     private RSACryptoServiceProvider rsa;
 
@@ -110,7 +117,6 @@ public class smp : MonoBehaviour
                 // Handle characters not found in the dictionary
                 throw new ArgumentException($"Invalid hex pair '{c}' in input string.");
 
-                result.Append("???");
             }
         }
 
@@ -331,8 +337,8 @@ public class smp : MonoBehaviour
         {
             int ckey = PlayerPrefs.GetInt("CustomKeyBitRate");
             int ckeyInBytes = ckey / 8;
-            Debug.Log(ckeyInBytes.ToString());
-            byte[] key = new byte[128]; // 256 bits = 32 bytes
+         //   Debug.Log(ckeyInBytes.ToString());
+            byte[] key = new byte[ckeyInBytes]; // 256 bits = 32 bytes
             rng.GetBytes(key);
             // Convert the key to a base64 string for easy storage or display
             return Convert.ToBase64String(key);

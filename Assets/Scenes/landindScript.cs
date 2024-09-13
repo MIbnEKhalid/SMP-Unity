@@ -30,8 +30,22 @@ public class landindScript : MonoBehaviour
 
     private IEnumerator Start()
     {
-        PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+
+        if (!PlayerPrefs.HasKey("CustomKeyBitRate"))
+        {
+            PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+        }
+
+        // Check if "RsaKeyBitRate" key exists, if not, set default value
+        if (!PlayerPrefs.HasKey("RsaKeyBitRate"))
+        {
+            PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
+        }
+
         PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
+        PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+
+
         // Get the stored key values
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
         string privateKey = PlayerPrefs.GetString("LocalRSAPrivateKey", "");
@@ -54,10 +68,10 @@ public class landindScript : MonoBehaviour
     }
     public void Update()
     {
-        if(removeSaveKey)
+        if (removeSaveKey)
         {
-           PlayerPrefs.SetString("LocalRSAPublicKey", null);
-           PlayerPrefs.SetString("LocalRSAPrivateKey", null);
+            PlayerPrefs.SetString("LocalRSAPublicKey", null);
+            PlayerPrefs.SetString("LocalRSAPrivateKey", null);
             Debug.Log("Removed");
         }
     }
