@@ -1,8 +1,6 @@
 # SMP Unity
  (Simple Message Project/Protocol) 
 
-This Project Is Built On Unity Editor Version 2022.3.26f1 On Windows
-
 **📌 Known Issues**
 
 - Key Generation Performance: The app take longer to generate higher-bit encryption keys especially lower specs devices.
