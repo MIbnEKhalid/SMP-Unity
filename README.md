@@ -18,7 +18,7 @@
 
 1. **Clone the Repository**
 
-   Open a terminal, and run this magic command:
+   Open a terminal, and run this command:
 
    ```bash
    git clone https://github.com/your-username/your-repo.git
