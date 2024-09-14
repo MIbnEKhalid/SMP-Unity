@@ -9,21 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/main.unity
     guid: 7f973247badb62d498e1d012633ac70e
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 85f46ae2ad5493540a3bd6c48f9140d7
-  - enabled: 1
-    path: Assets/Scenes/how.unity
-    guid: af3cb8cb65bed664d9f1fc2844da508f
-  - enabled: 1
-    path: Assets/Scenes/generateKey.unity
-    guid: 8980e1a915c7de846ba0f1db1bafa196
+    path: Assets/Scenes/Decrypt.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Encrypt.unity
     guid: 940d38b1a87778f4ebd38013bc7b9618
   - enabled: 1
-    path: Assets/Scenes/Decrypt.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/generateKey.unity
+    guid: 8980e1a915c7de846ba0f1db1bafa196
+  - enabled: 1
+    path: Assets/Scenes/how.unity
+    guid: af3cb8cb65bed664d9f1fc2844da508f
+  - enabled: 1
+    path: Assets/Scenes/WTF.unity
+    guid: 7bae3cecc0c380145b2006c1145df5ee
   - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 67c98d8b399aa7947b5e97788d60d3ee
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 85f46ae2ad5493540a3bd6c48f9140d7
   m_configObjects: {}
