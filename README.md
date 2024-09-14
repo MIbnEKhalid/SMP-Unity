@@ -9,7 +9,7 @@ This Project Is Built On Unity Editor Version 2022.3.26f1 On Windows
  
 **📚 Documentation:**
 
- - You can find the complete documentation for the app [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/).
+ - You can find the complete documentation for the app on [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/).
 
 ## License
 
