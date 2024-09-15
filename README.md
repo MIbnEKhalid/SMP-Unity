@@ -12,6 +12,7 @@
 # Quick Installation Guide for Unity GitHub Project
 
 **Prerequisites**
+
   **Unity Editor**: Install Unity Editor Version 2022.3.26f1 or higher (older versions may also work fine).
 
 ## Steps
