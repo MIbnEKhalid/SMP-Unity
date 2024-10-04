@@ -16,6 +16,7 @@ using UnityEngine;
 using System.IO;
 using System;
 using TMPro;
+
 #if UNITY_EDITOR
 using static UnityEditor.PlayerSettings;
 #endif
@@ -30,53 +31,43 @@ public class smp : MonoBehaviour
     private void Start()
     {
         customKeysize = PlayerPrefs.GetInt("CustomKeyBitRate");
-
+        Main();
     }
 
     private RSACryptoServiceProvider rsa;
 
-
     #region Assign ReAssign Hexa Decimal
 
-    // Define static dictionaries for character to numeric string mapping and vice versa
     private static readonly Dictionary<char, string> CharToHexMap = new Dictionary<char, string>
 {
-    // Lowercase letters
-    { 'a', "000" }, { 'b', "001" }, { 'c', "002" }, { 'd', "003" }, { 'e', "004" },
-    { 'f', "005" }, { 'g', "006" }, { 'h', "007" }, { 'i', "008" }, { 'j', "009" },
-    { 'k', "010" }, { 'l', "011" }, { 'm', "012" }, { 'n', "013" }, { 'o', "014" },
-    { 'p', "015" }, { 'q', "016" }, { 'r', "017" }, { 's', "018" }, { 't', "019" },
-    { 'u', "020" }, { 'v', "021" }, { 'w', "022" }, { 'x', "023" }, { 'y', "024" },
-    { 'z', "025" },
+    { 'a', "j" }, { 'b', "b" }, { 'c', "a" }, { 'd', "g" }, { 'e', "h" },
+    { 'f', "f" }, { 'g', "c" }, { 'h', "e" }, { 'i', "i" }, { 'j', "d" },
+    { 'k', "k" }, { 'l', "l" }, { 'm', "m" }, { 'n', "n" }, { 'o', "o" },
+    { 'p', "p" }, { 'q', "q" }, { 'r', "r" }, { 's', "s" }, { 't', "t" },
+    { 'u', "u" }, { 'v', "v" }, { 'w', "w" }, { 'x', "x" }, { 'y', "y" },
+    { 'z', "z" },
 
-    // Uppercase letters
-    { 'A', "100" }, { 'B', "101" }, { 'C', "102" }, { 'D', "103" }, { 'E', "104" },
-    { 'F', "105" }, { 'G', "106" }, { 'H', "107" }, { 'I', "108" }, { 'J', "109" },
-    { 'K', "110" }, { 'L', "111" }, { 'M', "112" }, { 'N', "113" }, { 'O', "114" },
-    { 'P', "115" }, { 'Q', "116" }, { 'R', "117" }, { 'S', "118" }, { 'T', "119" },
-    { 'U', "120" }, { 'V', "121" }, { 'W', "122" }, { 'X', "123" }, { 'Y', "124" },
-    { 'Z', "125" },
+    { 'A', "C" }, { 'B', "J" }, { 'C', "H" }, { 'D', "G" }, { 'E', "K" },
+    { 'F', "F" }, { 'G', "D" }, { 'H', "A" }, { 'I', "I" }, { 'J', "B" },
+    { 'K', "L" }, { 'L', "M" }, { 'M', "N" }, { 'N', "O" }, { 'O', "P" },
+    { 'P', "Q" }, { 'Q', "R" }, { 'R', "S" }, { 'S', "T" }, { 'T', "U" },
+    { 'U', "V" }, { 'V', "W" }, { 'W', "X" }, { 'X', "Y" }, { 'Y', "Z" },
+    { 'Z', "E" },
 
-    // Digits
-    { '0', "200" }, { '1', "201" }, { '2', "202" }, { '3', "203" }, { '4', "204" },
-    { '5', "205" }, { '6', "206" }, { '7', "207" }, { '8', "208" }, { '9', "209" },
+    { '0', "3" }, { '1', "1" }, { '2', "2" }, { '3', "4" }, { '4', "0" },
+    { '5', "5" }, { '6', "6" }, { '7', "9" }, { '8', "8" }, { '9', "7" },
 
-    // Punctuation and special characters
-    { ' ', "300" }, { '!', "301" }, { '"', "302" }, { '#', "303" }, { '$', "304" },
-    { '%', "305" }, { '&', "306" }, { '\'', "307" }, { '(', "308" }, { ')', "309" },
-    { '*', "310" }, { '+', "311" }, { ',', "312" }, { '-', "313" }, { '.', "314" },
-    { '/', "315" }, { ':', "316" }, { ';', "317" }, { '<', "318" }, { '=', "319" },
-    { '>', "320" }, { '?', "321" }, { '@', "322" }, { '[', "323" }, { '\\', "324" },
-    { ']', "325" }, { '^', "326" }, { '_', "327" }, { '`', "328" }, { '{', "329" },
-    { '|', "330" }, { '}', "331" }, { '~', "332" },
+    { ' ', " " }, { '!', "!" }, { '"', "\"" }, { '#', "#" }, { '$', "$" },
+    { '%', "%" }, { '&', "&" }, { '\'', "'" }, { '(', "(" }, { ')', ")" },
+    { '*', "*" }, { '+', "+" }, { ',', "," }, { '-', "-" }, { '.', "." },
+    { '/', "/" }, { ':', ":" }, { ';', ";" }, { '<', "<" }, { '=', "=" },
+    { '>', ">" }, { '?', "?" }, { '@', "@" }, { '[', "[" }, { '\\', "\\" },
+    { ']', "]" }, { '{', "{" }, { '}', "}" }, { '|', "|" },
 
-    // Additional punctuation and special characters
-    { '\r', "333" }, { '\n', "334" }, { '§', "335" }, { '©', "336" }, { '®', "337" },
-    { '™', "338" }, { '°', "339" }, { '×', "340" }, { '÷', "341" }, { '¢', "342" },
-    { '£', "343" }, { '€', "344" }, { '¥', "345" }, { '¬', "346" }, { '¶', "347" },
-    { '•', "348" }, { '∞', "349" }, { '±', "350" }, { 'µ', "351" }, { '≠', "352" },
-    { '≤', "353" }, { '≥', "354" }, { '∑', "355" }, { '∏', "356" }, { '∫', "357" },
-    { '√', "358" }, { '≈', "359" }, { 'π', "360" }, { 'Ω', "361" }
+    // Additional symbols
+    { '€', "€" }, { '£', "£" }, { '¥', "¥" }, { '©', "©" }, { '®', "®" },
+    { '™', "™" }, { '°', "°" }, { '±', "±" }, { '§', "§" }, { '•', "•" },
+    { '∞', "∞" }, { 'π', "π" }, { '√', "√" }
 };
 
 
@@ -87,19 +78,60 @@ public class smp : MonoBehaviour
         HexToCharMap = new Dictionary<string, char>();
         foreach (var pair in CharToHexMap)
         {
+            // Ensure each hex value only maps back to one character
             HexToCharMap[pair.Value] = pair.Key;
         }
     }
 
-    public void Main()
+    private static void CheckForDuplicateCharacters(Dictionary<char, string> map)
     {
-        string input = "Hello, World!";
-        string hexOutput = ConvertStringToCustomHex(input);
-        //   Debug.Log("Custom Numeric Output: " + hexOutput);
-        //MainScript.ConvertStringToCustomHex
-        //MainScript.ReconvertCustomHexToString
-        string reconvertedText = ReconvertCustomHexToString(hexOutput);
-        //      Debug.Log("Reconverted Text: " + reconvertedText);
+        var keys = new HashSet<char>();
+        var values = new HashSet<string>();
+        var duplicateKeys = new HashSet<char>();
+        var duplicateValues = new HashSet<string>();
+
+        foreach (var entry in map)
+        {
+            // Check for duplicate keys
+            if (!keys.Add(entry.Key))
+            {
+                duplicateKeys.Add(entry.Key);
+            }
+
+            // Check for duplicate values
+            if (!values.Add(entry.Value))
+            {
+                duplicateValues.Add(entry.Value);
+            }
+        }
+
+        // Log all duplicate keys
+        if (duplicateKeys.Count > 0)
+        {
+            Debug.Log("Duplicate keys found:");
+            foreach (var duplicateKey in duplicateKeys)
+            {
+                Debug.Log($"Duplicate key: {duplicateKey}");
+            }
+        }
+        else
+        {
+            Debug.Log("No duplicate keys found.");
+        }
+
+        // Log all duplicate values
+        if (duplicateValues.Count > 0)
+        {
+            Debug.Log("Duplicate values found:");
+            foreach (var duplicateValue in duplicateValues)
+            {
+                Debug.Log($"Duplicate value: {duplicateValue}");
+            }
+        }
+        else
+        {
+            Debug.Log("No duplicate values found.");
+        }
     }
 
     public string ConvertStringToCustomHex(string input)
@@ -110,13 +142,12 @@ public class smp : MonoBehaviour
         {
             if (CharToHexMap.TryGetValue(c, out string hexValue))
             {
-                result.Append(hexValue); // No space here
+                result.Append(hexValue); // Append the corresponding hex value
             }
             else
             {
                 // Handle characters not found in the dictionary
-                throw new ArgumentException($"Invalid hex pair '{c}' in input string.");
-
+                throw new ArgumentException($"Invalid character '{c}' in input string.");
             }
         }
 
@@ -130,23 +161,73 @@ public class smp : MonoBehaviour
 
         while (i < input.Length)
         {
-            string hex = input.Substring(i, 3);
+            // Read single character from input
+            string hex = input.Substring(i, 1);
             if (HexToCharMap.TryGetValue(hex, out char character))
             {
                 result.Append(character);
             }
             else
             {
-                // Handle numeric strings not found in the dictionary
-                result.Append('?');
-                throw new ArgumentException($"Invalid hex pair '{character}' in input string.");
-
+                // Handle unknown characters
+                result.Append('?'); // Placeholder for unknown characters
+                throw new ArgumentException($"Invalid hex character '{hex}' in input string.");
             }
-            i += 3; // Move to the next hex value (3 characters)
+            i += 1; // Move to the next character
         }
 
         return result.ToString();
     }
+
+
+    public void Main()
+    {
+        string input = "Hello World!,.";
+        string hexOutput = ConvertStringToCustomHex(input);
+        string reconvertedText = ReconvertCustomHexToString(hexOutput);
+        Debug.Log("input: " + input);
+        Debug.Log("hexOutput: " + hexOutput);
+        Debug.Log("Reconverted Text: " + reconvertedText);
+
+        CheckForDuplicateCharacters(CharToHexMap);
+
+
+
+
+
+
+
+
+
+        System.Random rand = new System.Random();
+        var values = new List<string>(CharToHexMap.Values);
+        var shuffledValues = new List<string>(values);
+
+        // Shuffle the values
+        for (int i = shuffledValues.Count - 1; i > 0; i--)
+        {
+            int j = rand.Next(i + 1);
+            // Swap
+            var temp = shuffledValues[i];
+            shuffledValues[i] = shuffledValues[j];
+            shuffledValues[j] = temp;
+        }
+
+        // Create a new dictionary with the shuffled values
+        var shuffledDict = new Dictionary<char, string>();
+        int index = 0;
+        foreach (var key in CharToHexMap.Keys)
+        {
+            shuffledDict[key] = shuffledValues[index++];
+        }
+        string s="";
+        // Output the shuffled dictionary
+        foreach (var kvp in shuffledDict)
+        {
+            s=s+$"{{ '{kvp.Key}', \"{kvp.Value}\" }},";
+        }
+        Debug.Log(s);
+    } 
 
     #endregion
 
@@ -295,7 +376,7 @@ public class smp : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("RSA Encryption failed: " + ex.Message);
+            UnityEngine.Debug.LogError("RSA Encryption failed: " + ex.Message);
             return "RSA Encryption failed: " + ex.Message;
         }
     }
@@ -318,12 +399,12 @@ public class smp : MonoBehaviour
         }
         catch (CryptographicException)
         {
-            Debug.LogError("Decryption failed. The data might be invalid or the key does not match.");
+            UnityEngine.Debug.LogError("Decryption failed. The data might be invalid or the key does not match.");
             return "";
         }
         catch (FormatException ex)
         {
-            Debug.LogError("The input is not a valid Base-64 string: " + ex.Message);
+            UnityEngine.Debug.LogError("The input is not a valid Base-64 string: " + ex.Message);
             return "";
         }
     }
@@ -337,7 +418,7 @@ public class smp : MonoBehaviour
         {
             int ckey = PlayerPrefs.GetInt("CustomKeyBitRate");
             int ckeyInBytes = ckey / 8;
-         //   Debug.Log(ckeyInBytes.ToString());
+            //   Debug.Log(ckeyInBytes.ToString());
             byte[] key = new byte[ckeyInBytes]; // 256 bits = 32 bytes
             rng.GetBytes(key);
             // Convert the key to a base64 string for easy storage or display
