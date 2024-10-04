@@ -16,6 +16,8 @@ using UnityEngine;
 using System.IO;
 using System;
 using TMPro;
+using static UnityEngine.UI.Image;
+using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 public class EncryptScript : MonoBehaviour
@@ -48,6 +50,8 @@ public class EncryptScript : MonoBehaviour
             InputPublicKey.text = publicKey;
             Debug.Log("left");
         }
+
+
     }
 
     public void EncryptTheText()
@@ -75,11 +79,15 @@ public class EncryptScript : MonoBehaviour
         Debug.Log("customKeyRSA:" + customKeyRSA);
 
         //string ASV = SMP.AssignHexValues(InputF.text);
-        //Debug.Log("Old ASV: " + ASV);
+        //Debug.Log("Old ASV: " + ASV); 
 
-        string ASV = SMP.ConvertStringToCustomHex(InputF.text);
+
+        Debug.Log("Message Input: " + InputF.text);
+
+        string noNewLines = InputF.text.Replace(Environment.NewLine, " <tag>newline1</tag> ").Replace("\n", " <tag>newline2</tag> ");
+
+        string ASV = SMP.ConvertStringToCustomHex(noNewLines);
         Debug.Log("New ASV: " + ASV);
-
 
         string CV = SMP.CompressString(ASV);
         Debug.Log("CV: " + CV);
@@ -100,7 +108,7 @@ public class EncryptScript : MonoBehaviour
             mainScript.ShowCopyMessage("Message Encrypted Sucessfully!");
         }
         else
-        { 
+        {
             Debug.LogError("Failed");
         }
         newGeneratedCustomKey = null; customKeyRSA = null; ASV = null; CV = null; EV = null; formatMessage = null; formatCustomKey = null; message = null;

@@ -24,21 +24,21 @@ using System.Text.RegularExpressions;
 
 public class DecryptScript : MonoBehaviour
 {
-     
+
     public TMP_InputField PrivateKey_IP;
     public TMP_InputField InputF;
-    public TMP_InputField OutputF; 
+    public TMP_InputField OutputF;
     public smp SMP;
     public main MainScript;
-     
+
 
     void Start()
     {
         OutputF.readOnly = true;
         string privateKey = PlayerPrefs.GetString("LocalRSAPrivateKey", "");
-        PrivateKey_IP.text = privateKey; 
+        PrivateKey_IP.text = privateKey;
     }
-     
+
 
     public void DecryptTheText()
     {
@@ -48,9 +48,10 @@ public class DecryptScript : MonoBehaviour
         string encryptedCustomKey = Regex.Match(InputF.text, keyPattern).Groups[1].Value;
         string encryptedMessage = Regex.Match(InputF.text, messagePattern).Groups[1].Value;
 
-        Debug.Log("k: " + encryptedCustomKey);
-        Debug.Log("m: " + encryptedMessage);
+        //      Debug.Log("k: " + encryptedCustomKey);
+        //      Debug.Log("m: " + encryptedMessage);
 
+        Debug.Log("Decrypt Input: " + PrivateKey_IP.text);
 
         string customKey = SMP.DecryptRSA(encryptedCustomKey, PrivateKey_IP.text);
         Debug.Log("customKey: " + customKey);
@@ -66,11 +67,11 @@ public class DecryptScript : MonoBehaviour
 
         //  string RSV = SMP.ReconvertHexString(DCV);
         //  Debug.Log("Old RSV: " + RSV);
+        string reconverted = RSV.Replace(" <tag>newline1</tag> ", Environment.NewLine).Replace(" <tag>newline2</tag> ", "\n");
 
-        OutputF.text = RSV;
-        Debug.Log(RSV);
+        OutputF.text = reconverted;
         MainScript.ShowCopyMessage("Message Decrypted Sucessfully!");
         encryptedCustomKey = null; encryptedMessage = null; customKey = null; DEV = null; DCV = null; RSV = null;
     }
-     
+
 }
