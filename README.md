@@ -34,6 +34,12 @@
    - Hit "Add" and select the folder where you cloned the project.
    - Find your project in Unity Hub and open it.
  
+## Credits
+
+This Project Utilizes The Following Assets:
+
+- **[Simple Spinner (Progress Indicators for UI)(Free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)** by **[Hippo](https://assetstore.unity.com/publishers/11086)**: This asset provides a collection of animated spinners used to enhance the user interface during loading operations, such as connecting to services, loading game levels, processing data, or downloading and uploading files. 
+
 
 ## License
 
