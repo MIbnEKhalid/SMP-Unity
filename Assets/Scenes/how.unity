@@ -543,6 +543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsText: {fileID: 4197767938097362827}
   canvasGroup: {fileID: 0}
+  fadeDuration: 0.5
+  fadeDelay: 0.5
   Message: {fileID: 0}
 --- !u!114 &1990026489
 MonoBehaviour:
@@ -741,7 +743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011717355, y: 0.00869677}
   m_AnchorMax: {x: 0.97800004, y: 0.987581}
-  m_AnchoredPosition: {x: -0.6420288, y: 0.5}
+  m_AnchoredPosition: {x: -0.6419678, y: 0.5}
   m_SizeDelta: {x: 0.7159996, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769878112539459427
@@ -886,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

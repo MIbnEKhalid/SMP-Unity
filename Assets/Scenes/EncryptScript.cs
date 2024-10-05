@@ -33,6 +33,8 @@ public class EncryptScript : MonoBehaviour
     public GameObject EncryptPage;
     public GameObject DecryptPage;
 
+    public bool EnableDebugLogs = true;
+
     void Start()
     {
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
@@ -41,24 +43,32 @@ public class EncryptScript : MonoBehaviour
         {
             OutputF.readOnly = true;
             InputPublicKey.text = publicKey;
-            Debug.Log("right");
+            DebugLog("right");
         }
 
         if (DecryptPage != null && DecryptPage.activeSelf)
         {
             OutputF.readOnly = true;
             InputPublicKey.text = publicKey;
-            Debug.Log("left");
+            DebugLog("left");
         }
 
 
     }
 
+    void DebugLog(string log)
+    {
+        if (EnableDebugLogs)
+        {
+            UnityEngine.Debug.Log(log);
+        }
+    }
+ 
     public void EncryptTheText()
     {
         bool test1 = false;
         string newGeneratedCustomKey = SMP.GenerateNewCustomKeyNow();
-        Debug.Log("newGeneratedCustomKey: " + newGeneratedCustomKey);
+        DebugLog("newGeneratedCustomKey: " + newGeneratedCustomKey);
 
         string customKeyRSA = SMP.EncryptRSA(newGeneratedCustomKey, InputPublicKey.text);
         if (customKeyRSA.StartsWith("RSA Encryption failed: "))
@@ -76,24 +86,26 @@ public class EncryptScript : MonoBehaviour
         {
             test1 = true;
         }
-        Debug.Log("customKeyRSA:" + customKeyRSA);
+        DebugLog("customKeyRSA:" + customKeyRSA);
 
         //string ASV = SMP.AssignHexValues(InputF.text);
         //Debug.Log("Old ASV: " + ASV); 
 
 
-        Debug.Log("Message Input: " + InputF.text);
+        DebugLog("Message Input: " + InputF.text);
 
+        //This string help to deal with newlinws in input, new line is replace by tag which then replace by new line in decryption.
+        //This is neccessary to add when using function ConvertStringToCustomHex.
         string noNewLines = InputF.text.Replace(Environment.NewLine, " <tag>newline1</tag> ").Replace("\n", " <tag>newline2</tag> ");
-
+ 
         string ASV = SMP.ConvertStringToCustomHex(noNewLines);
-        Debug.Log("New ASV: " + ASV);
+        DebugLog("New ASV: " + ASV);
 
         string CV = SMP.CompressString(ASV);
-        Debug.Log("CV: " + CV);
+        DebugLog("CV: " + CV);
 
         string EV = SMP.encrypt(CV, newGeneratedCustomKey);
-        Debug.Log("EV: " + EV);
+        DebugLog("EV: " + EV);
 
         string formatCustomKey = "<key>\n" + customKeyRSA + "\n</key>\n";
         string formatMessage = "<message>\n" + EV + "\n</message>";
@@ -104,12 +116,12 @@ public class EncryptScript : MonoBehaviour
             mainScript.fadeDuration = 0.5f;
             mainScript.fadeDelay = 0.5f;
             OutputF.text = message;
-            Debug.Log(message);
+            DebugLog(message);
             mainScript.ShowCopyMessage("Message Encrypted Sucessfully!");
         }
         else
         {
-            Debug.LogError("Failed");
+            DebugLog("Failed");
         }
         newGeneratedCustomKey = null; customKeyRSA = null; ASV = null; CV = null; EV = null; formatMessage = null; formatCustomKey = null; message = null;
     }
