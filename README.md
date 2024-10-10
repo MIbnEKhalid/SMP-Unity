@@ -41,6 +41,15 @@ This Project Utilizes The Following Assets:
 - **[Simple Spinner (Progress Indicators for UI)(Free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)** by **[Hippo](https://assetstore.unity.com/publishers/11086)**: This asset provides a collection of animated spinners used to enhance the user interface during loading operations, such as connecting to services, loading game levels, processing data, or downloading and uploading files. 
 
 
+## Binary Release
+You can download the binary release of SMP Unity from the links below or by visiting the [Release Page](https://github.com/MIbnEKhalid/SMP-Unity/releases), where you can find details of new updates, bug fixes, and more:
+
+- [Android.SMP.apk](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Android.SMP.apk)
+- [Windows.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Windows.SMP.zip)
+- [Linux.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Linux.SMP.zip)
+- [MacOS.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/MacOS.SMP.zip)
+
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
