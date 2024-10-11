@@ -963,13 +963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &250185996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,13 +1354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &338354355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,13 +1577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &413554058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2633,7 +2612,7 @@ GameObject:
   - component: {fileID: 606377045}
   - component: {fileID: 606377048}
   - component: {fileID: 606377047}
-  - component: {fileID: 606377046}
+  - component: {fileID: 606377049}
   m_Layer: 5
   m_Name: Clear_Button
   m_TagString: Untagged
@@ -2661,25 +2640,6 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 160.23, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &606377046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606377044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &606377047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2718,6 +2678,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606377044}
   m_CullTransparentMesh: 1
+--- !u!114 &606377049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606377044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 606377047}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: ClearOuput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 433474834}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &641231182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,7 +4190,7 @@ GameObject:
   - component: {fileID: 918297296}
   - component: {fileID: 918297299}
   - component: {fileID: 918297298}
-  - component: {fileID: 918297297}
+  - component: {fileID: 918297300}
   m_Layer: 5
   m_Name: Clear_Button
   m_TagString: Untagged
@@ -4202,25 +4218,6 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 160.23, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &918297297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918297295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &918297298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4259,6 +4256,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918297295}
   m_CullTransparentMesh: 1
+--- !u!114 &918297300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918297295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 918297298}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: ClearOuput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 117852004}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &933162924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,13 +4507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &969820231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,7 +5101,7 @@ GameObject:
   - component: {fileID: 1242780716}
   - component: {fileID: 1242780719}
   - component: {fileID: 1242780718}
-  - component: {fileID: 1242780717}
+  - component: {fileID: 1242780720}
   m_Layer: 5
   m_Name: Copy_Button
   m_TagString: Untagged
@@ -5083,25 +5129,6 @@ RectTransform:
   m_AnchoredPosition: {x: 81, y: 30}
   m_SizeDelta: {x: 160.41681, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1242780717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242780715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &1242780718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5140,6 +5167,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242780715}
   m_CullTransparentMesh: 1
+--- !u!114 &1242780720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242780715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1242780718}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: CopyTxt
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1182265379002644799}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1268674783
 GameObject:
   m_ObjectHideFlags: 0
@@ -5477,7 +5560,7 @@ GameObject:
   - component: {fileID: 1347908475}
   - component: {fileID: 1347908478}
   - component: {fileID: 1347908477}
-  - component: {fileID: 1347908476}
+  - component: {fileID: 1347908479}
   m_Layer: 5
   m_Name: Paste_Button
   m_TagString: Untagged
@@ -5505,25 +5588,6 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: 160.23, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1347908476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347908474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &1347908477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,6 +5626,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347908474}
   m_CullTransparentMesh: 1
+--- !u!114 &1347908479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347908474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1347908477}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: PasteTextToInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 117852004}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1362773481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5625,7 +5745,7 @@ GameObject:
   - component: {fileID: 1396791716}
   - component: {fileID: 1396791719}
   - component: {fileID: 1396791718}
-  - component: {fileID: 1396791717}
+  - component: {fileID: 1396791720}
   m_Layer: 5
   m_Name: Paste_Button
   m_TagString: Untagged
@@ -5653,25 +5773,6 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: 160.23, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1396791717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396791715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &1396791718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5710,6 +5811,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396791715}
   m_CullTransparentMesh: 1
+--- !u!114 &1396791720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396791715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1396791718}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: PasteTextToInput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 433474834}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1404483916
 GameObject:
   m_ObjectHideFlags: 0
@@ -5931,13 +6088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &1423526206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6926,6 +7076,7 @@ MonoBehaviour:
   mainScript: {fileID: 1990026490}
   EncryptPage: {fileID: 5500133362271125186}
   DecryptPage: {fileID: 853617767}
+  EnableDebugLogs: 1
 --- !u!114 &1990026490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7178,13 +7329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
 --- !u!114 &2109908384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8805,16 +8949,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 2268795385335846997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  onHoverAlpha: 0.7
-  onClickAlpha: 0.6
-  onClicked:
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 4226365512624505359}
+  m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 1990026490}, m_TargetAssemblyTypeName: main, Assembly-CSharp: }
+      - m_Target: {fileID: 1990026490}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: ClearOuput
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1182265379002644799}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &6030554966142385250
 CanvasRenderer:
   m_ObjectHideFlags: 0
