@@ -54,7 +54,7 @@ public class smp : MonoBehaviour
     { 'U', "V" }, { 'V', "W" }, { 'W', "X" }, { 'X', "Y" }, { 'Y', "Z" },
     { 'Z', "E" },
 
-    { '0', "3" }, { '1', "1" }, { '2', "2" }, { '3', "4" }, { '4', "0" },
+    { '0', "3" }, { '2', "2" }, { '3', "4" }, { '4', "0" },
     { '5', "5" }, { '6', "6" }, { '7', "9" }, { '8', "8" }, { '9', "7" },
 
     { ' ', " " }, { '!', "!" }, { '"', "\"" }, { '#', "#" }, { '$', "$" },
@@ -146,8 +146,12 @@ public class smp : MonoBehaviour
             }
             else
             {
+                // Append the original character and log a warning
+                result.Append(c); // Keep the original character
+                Debug.LogWarning($"Warning: No replacement found for character '{c}'. Using original character.");
+
                 // Handle characters not found in the dictionary
-                throw new ArgumentException($"Invalid character '{c}' in input string.");
+                // throw new ArgumentException($"Invalid character '{c}' in input string.");
             }
         }
 
@@ -169,9 +173,12 @@ public class smp : MonoBehaviour
             }
             else
             {
+                result.Append(hex); // Keep the original character
+                Debug.LogWarning($"Warning: No replacement found for character '{hex}'. Using original character.");
+
                 // Handle unknown characters
-                result.Append('?'); // Placeholder for unknown characters
-                throw new ArgumentException($"Invalid hex character '{hex}' in input string.");
+                // result.Append('?'); // Placeholder for unknown characters
+                // throw new ArgumentException($"Invalid hex character '{hex}' in input string.");
             }
             i += 1; // Move to the next character
         }
@@ -182,6 +189,7 @@ public class smp : MonoBehaviour
 
     public void Main()
     {
+        /*
         string input = "Hello World!,.";
         string hexOutput = ConvertStringToCustomHex(input);
         string reconvertedText = ReconvertCustomHexToString(hexOutput);
@@ -227,6 +235,8 @@ public class smp : MonoBehaviour
             s=s+$"{{ '{kvp.Key}', \"{kvp.Value}\" }},";
         }
         Debug.Log(s);
+
+        */
     } 
 
     #endregion

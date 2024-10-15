@@ -7076,7 +7076,7 @@ MonoBehaviour:
   mainScript: {fileID: 1990026490}
   EncryptPage: {fileID: 5500133362271125186}
   DecryptPage: {fileID: 853617767}
-  EnableDebugLogs: 1
+  EnableDebugLogs: 0
 --- !u!114 &1990026490
 MonoBehaviour:
   m_ObjectHideFlags: 0
