@@ -100,6 +100,7 @@ public class EncryptScript : MonoBehaviour
  
         string ASV = SMP.ConvertStringToCustomHex(noNewLines);
         DebugLog("New ASV: " + ASV);
+        Debug.Log("New ASV: " + ASV);
 
         string CV = SMP.CompressString(ASV);
         DebugLog("CV: " + CV);
