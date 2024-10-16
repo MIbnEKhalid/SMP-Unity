@@ -1,25 +1,14 @@
 #region Libaries
-using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.IO.Compression;
-using System.Globalization;
 using System.Collections;
-using UnityEngine.Video;
-using System.Numerics;
 using UnityEngine.UI;
-using System.Text;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
-using System.IO;
 using System;
 using TMPro;
 #endregion
 
-public class landindScript : MonoBehaviour
+public class landingscriptWebGL : MonoBehaviour
 {
     private bool isGenerating = false; // Flag to track key generation status
 
@@ -31,21 +20,19 @@ public class landindScript : MonoBehaviour
     public TMP_Text text;
     private IEnumerator Start()
     {
-
         if (!PlayerPrefs.HasKey("CustomKeyBitRate"))
         {
-            PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+            PlayerPrefs.SetInt("CustomKeyBitRate", 256);
         }
 
         // Check if "RsaKeyBitRate" key exists, if not, set default value
         if (!PlayerPrefs.HasKey("RsaKeyBitRate"))
         {
-            PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
+            PlayerPrefs.SetInt("RsaKeyBitRate", 512);
         }
 
-        PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
-        PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
-
+        PlayerPrefs.SetInt("RsaKeyBitRate", 512);
+        PlayerPrefs.SetInt("CustomKeyBitRate", 256);
 
         // Get the stored key values
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
@@ -57,7 +44,6 @@ public class landindScript : MonoBehaviour
         // Check if either key is missing
         if (string.IsNullOrEmpty(publicKey) || string.IsNullOrEmpty(privateKey))
         {
-
             GeneratePair();
         }
         else
@@ -66,6 +52,7 @@ public class landindScript : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
     }
+
     public void Update()
     {
         if (removeSaveKey)
@@ -75,7 +62,8 @@ public class landindScript : MonoBehaviour
             Debug.Log("Removed");
         }
     }
-    public async void GeneratePair()
+
+    public void GeneratePair()
     {
         // Check if key generation is already in progress
         if (isGenerating)
@@ -90,10 +78,8 @@ public class landindScript : MonoBehaviour
 
             Debug.Log("Starting RSA key generation...");
             text.text = "Generating RSA Key Pair...";
-            // Generate RSA Key Pair Asynchronously
-            (string publicKey, string privateKey) = await GenerateKeyPairAsync();
-
-
+            // Generate RSA Key Pair Synchronously
+            (string publicKey, string privateKey) = GenerateKeyPair();
 
             // Display Keys
             Debug.Log("Public Key: " + publicKey);
@@ -101,42 +87,36 @@ public class landindScript : MonoBehaviour
 
             PlayerPrefs.SetString("LocalRSAPublicKey", publicKey);
             PlayerPrefs.SetString("LocalRSAPrivateKey", privateKey);
-
         }
         finally
         {
-
             StartFadeIn();
             SceneManager.LoadScene("MainMenu");
             isGenerating = false; // Reset the flag when key generation is complete
         }
     }
 
-    private Task<(string, string)> GenerateKeyPairAsync()
+    private (string, string) GenerateKeyPair()
     {
-        return Task.Run(() =>
+        using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(512))
         {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
+            try
             {
-                try
-                {
-                    // Export the public key as an XML string
-                    string publicKey = rsa.ToXmlString(false);
+                // Export the public key as an XML string
+                string publicKey = rsa.ToXmlString(false);
 
-                    // Export the private key as an XML string
-                    string privateKey = rsa.ToXmlString(true);
+                // Export the private key as an XML string
+                string privateKey = rsa.ToXmlString(true);
 
-                    return (publicKey, privateKey);
-                }
-                finally
-                {
-                    // Clear the RSA key to avoid any potential memory leaks
-                    rsa.PersistKeyInCsp = false;
-                }
+                return (publicKey, privateKey);
             }
-        });
+            finally
+            {
+                // Clear the RSA key to avoid any potential memory leaks
+                rsa.PersistKeyInCsp = false;
+            }
+        }
     }
-
 
     public void StartFadeOut()
     {

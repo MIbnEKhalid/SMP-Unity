@@ -1,51 +1,46 @@
 #region Libaries
-using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.IO.Compression;
-using System.Globalization;
 using System.Collections;
 using UnityEngine.Video;
-using System.Numerics;
 using UnityEngine.UI;
-using System.Text;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
-using System.IO;
 using System;
 using TMPro;
 #endregion
 
-public class landindScript : MonoBehaviour
+public class WeB_RSAKeyPairGenerator : MonoBehaviour
 {
-    private bool isGenerating = false; // Flag to track key generation status
-
-    public CanvasGroup canvasGroup;  // Reference to the CanvasGroup
+    public TMP_InputField publickey_IP;
+    public TMP_InputField privatekey_IP;
+    public GameObject messageBox;
+    public TMP_Text Message;
     private float fadeDuration = 0.5f;  // Adjust duration for fade in/out
-    private float fadeDelay = 0.5f;
-    public bool removeSaveKey;
+    private float fadeDelay = 0.5f;     // Delay between fades
+    private CanvasGroup canvasGroup;  // Reference to the CanvasGroup
 
-    public TMP_Text text;
-    private IEnumerator Start()
+    private bool isGenerating = false; // Flag to track key generation status
+    int keysizeb;
+
+    private void Start()
     {
+        keysizeb = PlayerPrefs.GetInt("RsaKeyBitRate");
 
-        if (!PlayerPrefs.HasKey("CustomKeyBitRate"))
+        // Get or add a CanvasGroup component to the messageBox GameObject
+        if (messageBox != null)
         {
-            PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
+            canvasGroup = messageBox.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = messageBox.AddComponent<CanvasGroup>();  // Add CanvasGroup if it doesn't exist
+            }
+            canvasGroup.alpha = 0f;  // Ensure the initial alpha is 0 (fully transparent)
         }
-
-        // Check if "RsaKeyBitRate" key exists, if not, set default value
-        if (!PlayerPrefs.HasKey("RsaKeyBitRate"))
+        else
         {
-            PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
+            Debug.LogError("MessageBox GameObject is not assigned!");
         }
-
-        PlayerPrefs.SetInt("RsaKeyBitRate", 2048);
-        PlayerPrefs.SetInt("CustomKeyBitRate", 1024);
-
 
         // Get the stored key values
         string publicKey = PlayerPrefs.GetString("LocalRSAPublicKey", "");
@@ -54,28 +49,26 @@ public class landindScript : MonoBehaviour
         // Log the values for debugging
         Debug.Log($"PublicKey: {publicKey}");
         Debug.Log($"PrivateKey: {privateKey}");
+
         // Check if either key is missing
         if (string.IsNullOrEmpty(publicKey) || string.IsNullOrEmpty(privateKey))
         {
-
             GeneratePair();
         }
         else
         {
-            yield return StartCoroutine(FadeIn());
-            SceneManager.LoadScene("MainMenu");
+            publickey_IP.text = publicKey;
+            privatekey_IP.text = privateKey;
         }
     }
+
     public void Update()
     {
-        if (removeSaveKey)
-        {
-            PlayerPrefs.SetString("LocalRSAPublicKey", null);
-            PlayerPrefs.SetString("LocalRSAPrivateKey", null);
-            Debug.Log("Removed");
-        }
+        // PlayerPrefs.SetString("LocalRSAPublicKey", null);
+        // PlayerPrefs.SetString("LocalRSAPrivateKey", null);
     }
-    public async void GeneratePair()
+
+    public void GeneratePair()
     {
         // Check if key generation is already in progress
         if (isGenerating)
@@ -86,14 +79,14 @@ public class landindScript : MonoBehaviour
 
         try
         {
-            isGenerating = true;
+            isGenerating = true; // Set the flag to indicate that key generation is in progress
+            publickey_IP.text = "";
+            privatekey_IP.text = "";
 
             Debug.Log("Starting RSA key generation...");
-            text.text = "Generating RSA Key Pair...";
-            // Generate RSA Key Pair Asynchronously
-            (string publicKey, string privateKey) = await GenerateKeyPairAsync();
 
-
+            // Generate RSA Key Pair Synchronously
+            (string publicKey, string privateKey) = GenerateKeyPair();
 
             // Display Keys
             Debug.Log("Public Key: " + publicKey);
@@ -102,41 +95,60 @@ public class landindScript : MonoBehaviour
             PlayerPrefs.SetString("LocalRSAPublicKey", publicKey);
             PlayerPrefs.SetString("LocalRSAPrivateKey", privateKey);
 
+            publickey_IP.text = publicKey;
+            privatekey_IP.text = privateKey;
         }
         finally
         {
-
-            StartFadeIn();
-            SceneManager.LoadScene("MainMenu");
             isGenerating = false; // Reset the flag when key generation is complete
+            ShowCopyMessage("New RSA Pair Key Generated Successfully");
         }
     }
 
-    private Task<(string, string)> GenerateKeyPairAsync()
+    public void ShowCopyMessage(string message)
     {
-        return Task.Run(() =>
-        {
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
-            {
-                try
-                {
-                    // Export the public key as an XML string
-                    string publicKey = rsa.ToXmlString(false);
-
-                    // Export the private key as an XML string
-                    string privateKey = rsa.ToXmlString(true);
-
-                    return (publicKey, privateKey);
-                }
-                finally
-                {
-                    // Clear the RSA key to avoid any potential memory leaks
-                    rsa.PersistKeyInCsp = false;
-                }
-            }
-        });
+        StartCoroutine(showMessage(message));
     }
 
+    public void CopyTxt(TMP_InputField inputField)
+    {
+        TextEditor textEditor = new TextEditor();
+        textEditor.text = inputField.text;
+        textEditor.OnFocus();
+        textEditor.SelectAll();
+        textEditor.Copy();
+    }
+
+    private IEnumerator showMessage(string txt)
+    {
+        Message.text = txt;
+        yield return StartCoroutine(FadeIn());
+        yield return new WaitForSeconds(0.7f);
+        yield return StartCoroutine(FadeOut());
+    }
+
+    private (string, string) GenerateKeyPair()
+    {
+        Debug.Log("keysizeb:" + keysizeb);
+        using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(keysizeb))
+        {
+            try
+            {
+                // Export the public key as an XML string
+                string publicKey = rsa.ToXmlString(false);
+
+                // Export the private key as an XML string
+                string privateKey = rsa.ToXmlString(true);
+
+                return (publicKey, privateKey);
+            }
+            finally
+            {
+                // Clear the RSA key to avoid any potential memory leaks
+                rsa.PersistKeyInCsp = false;
+            }
+        }
+    }
 
     public void StartFadeOut()
     {

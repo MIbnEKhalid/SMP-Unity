@@ -13,18 +13,24 @@ public class SettingsScript : MonoBehaviour
 {
     public TMP_InputField ck_IP;
     public TMP_InputField Rk_IP;
+    public GameObject RestrictPage;
     private RSACryptoServiceProvider rsa;
     bool isGenerating;
 
     void Start()
     {
+#if UNITY_WEBGL
+        RestrictPage.SetActive(true);
+#else
+        RestrictPage.SetActive(false);
+#endif
         int rkey = PlayerPrefs.GetInt("RsaKeyBitRate");
         int ckey = PlayerPrefs.GetInt("CustomKeyBitRate");
 
         ck_IP.text = ckey.ToString();
         Rk_IP.text = rkey.ToString();
-        string pubickey = "<RSAKeyValue><Modulus>0QfChGRq16w4UDFe0V2pjsu7BCoDifQ+q4iR4DBO1lafxYLWVbyYWQLCdKtpDXHgAX0/XICFxUyLwUqVRgqVc5FxjbThgamQqBqcXUzpFCSdoqLwqINu+krgRp3BqxiZAVimqJkA4x6J+NY4BYCbsJDA+BXgrDqA7wkeNyGHzTE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
-        Debug.Log("RSA Enc:  " + EncryptRSA(GenerateNewCustomKeyNow(703), pubickey));
+    //    string pubickey = "<RSAKeyValue><Modulus>0QfChGRq16w4UDFe0V2pjsu7BCoDifQ+q4iR4DBO1lafxYLWVbyYWQLCdKtpDXHgAX0/XICFxUyLwUqVRgqVc5FxjbThgamQqBqcXUzpFCSdoqLwqINu+krgRp3BqxiZAVimqJkA4x6J+NY4BYCbsJDA+BXgrDqA7wkeNyGHzTE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+    //    Debug.Log("RSA Enc:  " + EncryptRSA(GenerateNewCustomKeyNow(703), pubickey));
     }
 
     private bool isFullscreen = true;
