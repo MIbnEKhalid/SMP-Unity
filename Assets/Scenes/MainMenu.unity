@@ -2836,7 +2836,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: https://mbktechstudio.com/#contact
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 1810440043}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2848,7 +2848,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &1128139052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3495,7 +3495,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "SMP\nSimple Message Project / Protocol \n(not simple)"
+  m_text: 'SMP
+
+    Secret Message Project / Protocol  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

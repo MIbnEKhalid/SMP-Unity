@@ -17,8 +17,7 @@ public class landingscriptWebGL : MonoBehaviour
     private float fadeDelay = 0.5f;
     public bool removeSaveKey;
 
-    public TMP_Text text;
-    private IEnumerator Start()
+     private IEnumerator Start()
     {
         if (!PlayerPrefs.HasKey("CustomKeyBitRate"))
         {
@@ -77,8 +76,7 @@ public class landingscriptWebGL : MonoBehaviour
             isGenerating = true;
 
             Debug.Log("Starting RSA key generation...");
-            text.text = "Generating RSA Key Pair...";
-            // Generate RSA Key Pair Synchronously
+             // Generate RSA Key Pair Synchronously
             (string publicKey, string privateKey) = GenerateKeyPair();
 
             // Display Keys

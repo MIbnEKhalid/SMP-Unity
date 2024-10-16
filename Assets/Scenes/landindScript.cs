@@ -27,8 +27,7 @@ public class landindScript : MonoBehaviour
     private float fadeDuration = 0.5f;  // Adjust duration for fade in/out
     private float fadeDelay = 0.5f;
     public bool removeSaveKey;
-
-    public TMP_Text text;
+ 
     private IEnumerator Start()
     {
 
@@ -88,8 +87,7 @@ public class landindScript : MonoBehaviour
         {
             isGenerating = true;
 
-            Debug.Log("Starting RSA key generation...");
-            text.text = "Generating RSA Key Pair...";
+            Debug.Log("Starting RSA key generation..."); 
             // Generate RSA Key Pair Asynchronously
             (string publicKey, string privateKey) = await GenerateKeyPairAsync();
 
