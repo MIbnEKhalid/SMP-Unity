@@ -1,5 +1,5 @@
 # SMP Unity
- (Simple Message Project/Protocol) not simple :)
+ (Secret Message Project/Protocol)
 
 **📌 Known Issues**
 
