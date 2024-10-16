@@ -55,7 +55,7 @@ You can download the binary release of SMP Unity from the links below or by visi
 - [Windows.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Windows.SMP.zip)
 - [Linux.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Linux.SMP.zip)
 - [MacOS.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/MacOS.SMP.zip)
-- [WebGL.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/WebGL.SMP.zip) or [PreView WebGL Build On Browser](https://mbktechstudio.com/SMP-Unity-WEBGL/)
+- [WebGL.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/WebGL.SMP.zip) or [PreView WebGL Build On Browser](https://mbktechstudio.com/SMP-Unity/)
 
 
 ## License
