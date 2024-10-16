@@ -8,53 +8,71 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-    <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
+    <link rel="stylesheet" href="https:/docs.mbktechstudio.com/Assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="https://mbktechstudio.com/Assets/Images/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
+<style>
+    @media (max-width: 1024px) {
+        header {
+            display: none;
+        }
+    }
+    
+    section {
+        padding: auto auto auto;
+    }
+</style>
+<header>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <div class="image">
+                    <img src="https://mbktechstudio.com/Assets/Images/dg.svg" alt="" />
+                </div>
+                <div class="text">
+                    <a href="https://mbktechstudio.com/">MBK Tech Studio</a>
+                </div>
+            </div>
+            <div class="media-icons">
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <body>
-    <header>
-        <nav>
-            <div class="navbar">
-                <div class="logo">
-                    <div class="image">
-                        <img src="https://mbktechstudio.com/Assets/Images/dg.svg" alt="" />
-                    </div>
-                    <div class="text">
-                        <a href="https://mbktechstudio.com/">MBK Tech Studio</a>
-                    </div>
-                </div>
-                <div class="media-icons">
-                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <div id="unity-container" class="unity-desktop">
-        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-        <div id="unity-loading-bar">
-            <div id="unity-logo"></div>
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
+
+    <section class="about" id="about">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning"> </div>
+            <div id="unity-footer">
+                <div id="unity-webgl-logo"></div>
+                <div id="unity-fullscreen-button"></div>
+                <div id="unity-build-title">SMP-Unity</div>
+                <div class="button field is-grouped" style="  justify-content: center;">
+                    <div class="control"><button class="button is-primary" onclick="openDownloadPage()" id="submit-button">Download App</button></div>
+                </div>
             </div>
         </div>
-        <div id="unity-warning"> </div>
-        <div id="unity-footer">
-            <div id="unity-webgl-logo"></div>
-            <div id="unity-fullscreen-button"></div>
-            <div id="unity-build-title">SMP-Unity</div>
-        </div>
-    </div>
+
+    </section>
 
     <footer>
         <div class="text">
@@ -130,6 +148,9 @@
             });
         };
 
+        function openDownloadPage() {
+            window.open("https://mbktechstudio.com/SMP-Web");
+        }
         document.body.appendChild(script);
     </script>
 </body>
