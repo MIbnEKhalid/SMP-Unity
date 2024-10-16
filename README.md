@@ -33,7 +33,14 @@
    - Fire up Unity Hub.
    - Hit "Add" and select the folder where you cloned the project.
    - Find your project in Unity Hub and open it.
+  
+3. **Install Unity Asset**
+   - Download This Unity Asset **[Simple Spinner(free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)**.
+   - Install Files In Assets/Assets Folder.
+   - This asset file cannot be uploaded here because the Unity Asset License (specifically for Extension Assets) does not allow for redistribution or sharing of the asset files. Users must obtain the asset directly from the official Unity Asset Store
+### **Project Installation Complete**
  
+
 ## Credits
 
 This Project Utilizes The Following Assets:
