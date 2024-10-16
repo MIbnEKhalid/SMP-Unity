@@ -68,4 +68,4 @@ Copyright (C) 2024 Muhammad Bin Khalid
 
 ## Contact
 
-For questions or contributions, please contact Muhammad Bin Khalid at [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com).
+For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/support](https://mbktechstudio.com/Support/), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com).
