@@ -1,5 +1,5 @@
 # SMP Unity
- (Simple Message Project/Protocol) not simple :)
+ (Secret Message Project/Protocol)
 
 **📌 Known Issues**
 
@@ -33,7 +33,14 @@
    - Fire up Unity Hub.
    - Hit "Add" and select the folder where you cloned the project.
    - Find your project in Unity Hub and open it.
+  
+3. **Install Unity Asset**
+   - Download This Unity Asset **[Simple Spinner(free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)**.
+   - Install Files In `SMP-Unity/Assets/Assets` Folder.
+   - This asset file cannot be uploaded here because the Unity Asset License (specifically for Extension Assets) does not allow for redistribution or sharing of the asset files. Users must obtain the asset directly from the official Unity Asset Store
+### **Project Installation Complete**
  
+
 ## Credits
 
 This Project Utilizes The Following Assets:
@@ -48,6 +55,7 @@ You can download the binary release of SMP Unity from the links below or by visi
 - [Windows.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Windows.SMP.zip)
 - [Linux.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/Linux.SMP.zip)
 - [MacOS.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/MacOS.SMP.zip)
+- [WebGL.SMP.zip](https://github.com/MIbnEKhalid/SMP-Unity/releases/download/Release/WebGL.SMP.zip) or [PreView WebGL Build On Browser](https://mbktechstudio.com/SMP-Unity-WEBGL/)
 
 
 ## License
@@ -60,4 +68,4 @@ Copyright (C) 2024 Muhammad Bin Khalid
 
 ## Contact
 
-For questions or contributions, please contact Muhammad Bin Khalid at [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com).
+For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/support](https://mbktechstudio.com/Support/), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com).
