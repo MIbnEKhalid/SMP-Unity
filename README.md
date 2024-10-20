@@ -7,7 +7,7 @@
  
 **📚 Documentation:**
 
- - You can find the complete documentation for the app on [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/)(not ready).
+ - You can find the complete documentation for the app on [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/) (Not Published Yet).
 
 **📦 Upcoming Features / Bug Fixes**
 
