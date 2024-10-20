@@ -9,6 +9,13 @@
 
  - You can find the complete documentation for the app on [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/)(not ready).
 
+**📦 Upcoming Features / Bug Fixes**
+
+  Platform WebGL: 
+  - Allow clipboard sharing between the host and WebGL build
+
+
+
 # Quick Installation Guide for Unity GitHub Project
 
 **Prerequisites**
