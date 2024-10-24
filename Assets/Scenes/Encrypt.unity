@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 117852006}
   - component: {fileID: 117852005}
   - component: {fileID: 117852004}
+  - component: {fileID: 117852008}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -469,6 +470,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 700, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &117852008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117852003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &134203555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1693,7 @@ GameObject:
   - component: {fileID: 433474836}
   - component: {fileID: 433474835}
   - component: {fileID: 433474834}
+  - component: {fileID: 433474838}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -1842,6 +1857,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 700, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &433474838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433474833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &434002577
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,6 +9623,7 @@ GameObject:
   - component: {fileID: 1514639731450223068}
   - component: {fileID: 2128418879031393966}
   - component: {fileID: 1182265379002644799}
+  - component: {fileID: 7609442025709715164}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -9602,6 +9631,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7609442025709715164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7609442025709715163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!224 &7940873288563764225
 RectTransform:
   m_ObjectHideFlags: 0
