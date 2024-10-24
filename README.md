@@ -52,7 +52,9 @@
 
 This Project Utilizes The Following Assets:
 
-- **[Simple Spinner (Progress Indicators for UI)(Free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)** by **[Hippo](https://assetstore.unity.com/publishers/11086)**: This asset provides a collection of animated spinners used to enhance the user interface during loading operations, such as connecting to services, loading game levels, processing data, or downloading and uploading files. 
+- **[Simple Spinner (Progress Indicators for UI)(Free)](https://assetstore.unity.com/packages/2d/gui/icons/simple-spinner-progress-indicators-for-ui-237500)** by **[Hippo](https://assetstore.unity.com/publishers/11086)**: This asset provides a collection of animated spinners used to enhance the user interface during loading operations, such as connecting to services, loading game levels, processing data, or downloading and uploading files.
+
+- **[WebGLInput(OpenSource)](https://github.com/kou-yeung/WebGLInput)** by **[Kou-Yeung](https://github.com/kou-yeung/)**: This tool enables copy-paste functionality in Unity WebGL builds, improving input interactions in web applications.
 
 
 ## Binary Release
