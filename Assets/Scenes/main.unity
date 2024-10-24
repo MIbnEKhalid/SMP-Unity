@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 775689158}
   - component: {fileID: 775689157}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: FPSTextTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 1589633221}
   - component: {fileID: 1589633220}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: LoadingTextTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1693874813}
   removeSaveKey: 0
-  text: {fileID: 0}
 --- !u!114 &1990026490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +952,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1693874813}
   removeSaveKey: 0
-  text: {fileID: 0}
 --- !u!1 &2089324690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1072,7 @@ GameObject:
   - component: {fileID: 215230170615329586}
   - component: {fileID: 5338135564243613383}
   m_Layer: 5
-  m_Name: Spinner1
+  m_Name: Spinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
