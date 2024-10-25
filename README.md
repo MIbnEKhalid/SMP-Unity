@@ -1,6 +1,7 @@
 # SMP Unity
  (Secret Message Project/Protocol)
 
+ **📚 Documentation:**
 You can find the complete documentation for the app on [docs.mbktechstudio.com/smp/](https://docs.mbktechstudio.com/smp/) (Not Published Yet).
 
 
@@ -8,7 +9,7 @@ You can find the complete documentation for the app on [docs.mbktechstudio.com/s
 
 - **Key Generation Performance:** The app take longer to generate higher-bit encryption keys especially lower specs devices.
 - **WebGL Build - Copy/Paste Button:** In WebGL builds, both the copy and paste buttons don't function as expected. They interact with the WebGL build's clipboard content instead of the device clipboard. To copy or paste the device clipboard content, use the shortcuts Ctrl+C (copy) and Ctrl+V (paste) on desktop, or use the system's copy and paste options on mobile devices.
-**📚 Documentation:**
+
 
 
 # Quick Installation Guide for Unity GitHub Project
